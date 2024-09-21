@@ -15,6 +15,16 @@ _Hint, search type 1 vs type 2 slowly changing dimensions._
 
 Bonus: Are there privacy implications to this, why or why not?
 ```
+
+Overwriting Addresses (Type 1 SCD)
+This approach overwrites the existing address whenever a customer’s address changes. There is no historical record of past addresses.
+
+Type 1 Overwriting:
+
+Privacy Risk: Lower privacy risk compared to Type 2 since only the current address is stored. However, even current address information can be sensitive, so it should still be securely stored and protected.
+Mitigation: Similar to Type 2, encryption and compliance with privacy laws are important to ensure that even current addresses are securely managed.
+
+Yes, there are privacy implications
 Retaining Address Changes (Type 2 SCD)
 This approach tracks every change to a customer’s address, retaining historical information. Each address change creates a new record with start and end dates to define the time period when the address was valid.
 
