@@ -15,7 +15,12 @@ _Hint, search type 1 vs type 2 slowly changing dimensions._
 
 Bonus: Are there privacy implications to this, why or why not?
 ```
-Your answer...
+Retaining Address Changes (Type 2 SCD)
+This approach tracks every change to a customer’s address, retaining historical information. Each address change creates a new record with start and end dates to define the time period when the address was valid.
+
+Yes, there are privacy implications, particularly with the Type 2 approach where historical addresses are retained
+Privacy Risk: Storing historical addresses poses a higher privacy risk. If this data is compromised or misused, it could reveal personal location history, which could be sensitive (e.g., if a customer moved to escape a harmful situation).
+Mitigation: The store should have strong data protection policies and compliance with data privacy regulations (e.g., GDPR, CCPA). Implementing encryption for sensitive data and offering customers the option to request deletion of old addresses may help mitigate this risk.
 ```
 
 ## Question 4
@@ -23,7 +28,16 @@ Review the AdventureWorks Schema [here](https://i.stack.imgur.com/LMu4W.gif)
 
 Highlight at least two differences between it and your ERD. Would you change anything in yours?
 ```
-Your answer...
+yes, they included the PK and FK
+and The AdventureWorks schema is highly normalized. There are separate tables for Address
+
+I would consider changing the way addresses are handled in the bookstore ERD if the business needs expand over time. Here’s why:
+
+Multiple Addresses: If the bookstore starts offering shipping options, a customer may need to maintain separate billing and shipping addresses. Storing these in a separate Address table (like in AdventureWorks) would allow the flexibility to manage multiple addresses per customer.
+
+Normalization and Data Integrity: Normalizing addresses into a separate table reduces data duplication. For example, if many customers live in the same city or have the same ZIP code, storing this information separately avoids redundancy. It also ensures that address data can be updated in one place without affecting multiple records.
+
+Scalability: As the business grows, having a more scalable solution for addresses would be helpful. If you eventually need to track addresses for employees (for HR purposes), suppliers, or other entities, a separate Address table that links to multiple tables makes the database design more flexible and easier to maintain.
 ```
 
 # Criteria
